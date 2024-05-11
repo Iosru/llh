@@ -12,9 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HexagonGrid hg =
-        HexagonGrid(gridHeight: 10, gridWidth: 10, isGenerated: true);
-    hg = hg.copyWith(hexagons: hg.generateMap());
+    double size = 64;
+    HexagonGrid hg = HexagonGrid(height: 9, width: 9);
+    hg = hg.copyWith(
+        hexagons: hg.generateMap(
+            Hexagon(height: size, width: size, color: Colors.transparent)));
+    List<Hexagon> hexagons = hg.hexagons;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Last Light\'s Hope',
@@ -27,15 +31,22 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.black,
         body: Center(
           child: Container(
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.white)),
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(border: Border.all(color: Colors.white)),
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Center(
               child: Stack(
                 children: [
-                  for (Hexagon h in hg.hexagons!) HexagonWidget(hexagon: h),
+                  for (Hexagon h in hexagons)
+                    Positioned(
+                      left: h.position.dx,
+                      top: h.position.dy,
+                      child: HexagonWidget(hexagon: h),
+                    ),
                 ],
-              )),
+              ),
+            ),
+          ),
         ),
       ),
     );

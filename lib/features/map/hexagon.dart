@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,40 +8,30 @@ part 'hexagon.freezed.dart';
 @unfreezed
 abstract class Hexagon with _$Hexagon {
   const Hexagon._();
-
   factory Hexagon({
+    @Default(32) double height,
+    @Default(32) double width,
     @Default(0) int x,
     @Default(0) int y,
-    @Default(24) double radius,
-    @Default(Offset(0, 0)) Offset offset,
-    @Default(Colors.blue) Color color,
-    @Default(75.0) double chance,
+    @Default(Offset(0, 0)) Offset position,
+    @Default(Colors.amber) Color color,
+    @Default(Colors.orange) Color borderColor,
+    @Default(4) double borderWidth,
+    @Default('') String icon,
   }) = _Hexagon;
 
-  Hexagon setCoordinates(int x, int y) {
-    return copyWith(x: x, y: y);
-  }
+  Hexagon getOffset() {
+    double x;
+    double y;
+    //Calculations for the size of a pointy hexagon.
+    double size = width / sqrt(3);
 
-  Hexagon generateOffset(
-      double x, double y, double gridZoom, Offset gridOffset) {
-    double spacingFactor = 0.9;
-    double scalingFactor = 1.025;
-    double offsetX = 0;
-    double offsetY = 0;
-
-    offsetY = ((((radius * 2) * (spacingFactor - 0.11)) * y) * scalingFactor +
-            (radius / 8)) +
-        radius;
-    offsetX = (y % 2 == 0)
-        ? ((((radius * 2) * spacingFactor - 0.1) * x) * scalingFactor -
-                radius) +
-            radius
-        : (((((radius * 2) * spacingFactor) * x)) * scalingFactor + radius) -
-            (radius / 8.25);
-
-    double centerX = offsetX + gridOffset.dx * gridZoom;
-    double centerY = offsetY + gridOffset.dy * gridZoom;
-
-    return copyWith(offset: Offset(centerX, centerY));
+    if (this.y % 2 == 0) {
+      x = ((sqrt(3) * size) * this.x) + ((sqrt(3) * size) / 2);
+    } else {
+      x = (sqrt(3) * size) * this.x;
+    }
+    y = ((3 / 2) * size) * this.y;
+    return copyWith(position: Offset(x, y));
   }
 }

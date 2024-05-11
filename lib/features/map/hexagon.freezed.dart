@@ -16,18 +16,24 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Hexagon {
+  double get height => throw _privateConstructorUsedError;
+  set height(double value) => throw _privateConstructorUsedError;
+  double get width => throw _privateConstructorUsedError;
+  set width(double value) => throw _privateConstructorUsedError;
   int get x => throw _privateConstructorUsedError;
   set x(int value) => throw _privateConstructorUsedError;
   int get y => throw _privateConstructorUsedError;
   set y(int value) => throw _privateConstructorUsedError;
-  double get radius => throw _privateConstructorUsedError;
-  set radius(double value) => throw _privateConstructorUsedError;
-  Offset get offset => throw _privateConstructorUsedError;
-  set offset(Offset value) => throw _privateConstructorUsedError;
+  Offset get position => throw _privateConstructorUsedError;
+  set position(Offset value) => throw _privateConstructorUsedError;
   Color get color => throw _privateConstructorUsedError;
   set color(Color value) => throw _privateConstructorUsedError;
-  double get chance => throw _privateConstructorUsedError;
-  set chance(double value) => throw _privateConstructorUsedError;
+  Color get borderColor => throw _privateConstructorUsedError;
+  set borderColor(Color value) => throw _privateConstructorUsedError;
+  double get borderWidth => throw _privateConstructorUsedError;
+  set borderWidth(double value) => throw _privateConstructorUsedError;
+  String get icon => throw _privateConstructorUsedError;
+  set icon(String value) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HexagonCopyWith<Hexagon> get copyWith => throw _privateConstructorUsedError;
@@ -39,7 +45,15 @@ abstract class $HexagonCopyWith<$Res> {
       _$HexagonCopyWithImpl<$Res, Hexagon>;
   @useResult
   $Res call(
-      {int x, int y, double radius, Offset offset, Color color, double chance});
+      {double height,
+      double width,
+      int x,
+      int y,
+      Offset position,
+      Color color,
+      Color borderColor,
+      double borderWidth,
+      String icon});
 }
 
 /// @nodoc
@@ -55,14 +69,25 @@ class _$HexagonCopyWithImpl<$Res, $Val extends Hexagon>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? height = null,
+    Object? width = null,
     Object? x = null,
     Object? y = null,
-    Object? radius = null,
-    Object? offset = null,
+    Object? position = null,
     Object? color = null,
-    Object? chance = null,
+    Object? borderColor = null,
+    Object? borderWidth = null,
+    Object? icon = null,
   }) {
     return _then(_value.copyWith(
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as double,
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -71,22 +96,26 @@ class _$HexagonCopyWithImpl<$Res, $Val extends Hexagon>
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as int,
-      radius: null == radius
-          ? _value.radius
-          : radius // ignore: cast_nullable_to_non_nullable
-              as double,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as Offset,
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color,
-      chance: null == chance
-          ? _value.chance
-          : chance // ignore: cast_nullable_to_non_nullable
+      borderColor: null == borderColor
+          ? _value.borderColor
+          : borderColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      borderWidth: null == borderWidth
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
               as double,
+      icon: null == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -99,7 +128,15 @@ abstract class _$$HexagonImplCopyWith<$Res> implements $HexagonCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int x, int y, double radius, Offset offset, Color color, double chance});
+      {double height,
+      double width,
+      int x,
+      int y,
+      Offset position,
+      Color color,
+      Color borderColor,
+      double borderWidth,
+      String icon});
 }
 
 /// @nodoc
@@ -113,14 +150,25 @@ class __$$HexagonImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? height = null,
+    Object? width = null,
     Object? x = null,
     Object? y = null,
-    Object? radius = null,
-    Object? offset = null,
+    Object? position = null,
     Object? color = null,
-    Object? chance = null,
+    Object? borderColor = null,
+    Object? borderWidth = null,
+    Object? icon = null,
   }) {
     return _then(_$HexagonImpl(
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
+              as double,
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
+              as double,
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -129,22 +177,26 @@ class __$$HexagonImplCopyWithImpl<$Res>
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as int,
-      radius: null == radius
-          ? _value.radius
-          : radius // ignore: cast_nullable_to_non_nullable
-              as double,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
+      position: null == position
+          ? _value.position
+          : position // ignore: cast_nullable_to_non_nullable
               as Offset,
       color: null == color
           ? _value.color
           : color // ignore: cast_nullable_to_non_nullable
               as Color,
-      chance: null == chance
-          ? _value.chance
-          : chance // ignore: cast_nullable_to_non_nullable
+      borderColor: null == borderColor
+          ? _value.borderColor
+          : borderColor // ignore: cast_nullable_to_non_nullable
+              as Color,
+      borderWidth: null == borderWidth
+          ? _value.borderWidth
+          : borderWidth // ignore: cast_nullable_to_non_nullable
               as double,
+      icon: null == icon
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -153,14 +205,23 @@ class __$$HexagonImplCopyWithImpl<$Res>
 
 class _$HexagonImpl extends _Hexagon {
   _$HexagonImpl(
-      {this.x = 0,
+      {this.height = 32,
+      this.width = 32,
+      this.x = 0,
       this.y = 0,
-      this.radius = 36,
-      this.offset = const Offset(0, 0),
-      this.color = Colors.blue,
-      this.chance = 75.0})
+      this.position = const Offset(0, 0),
+      this.color = Colors.amber,
+      this.borderColor = Colors.orange,
+      this.borderWidth = 4,
+      this.icon = ''})
       : super._();
 
+  @override
+  @JsonKey()
+  double height;
+  @override
+  @JsonKey()
+  double width;
   @override
   @JsonKey()
   int x;
@@ -169,20 +230,23 @@ class _$HexagonImpl extends _Hexagon {
   int y;
   @override
   @JsonKey()
-  double radius;
-  @override
-  @JsonKey()
-  Offset offset;
+  Offset position;
   @override
   @JsonKey()
   Color color;
   @override
   @JsonKey()
-  double chance;
+  Color borderColor;
+  @override
+  @JsonKey()
+  double borderWidth;
+  @override
+  @JsonKey()
+  String icon;
 
   @override
   String toString() {
-    return 'Hexagon(x: $x, y: $y, radius: $radius, offset: $offset, color: $color, chance: $chance)';
+    return 'Hexagon(height: $height, width: $width, x: $x, y: $y, position: $position, color: $color, borderColor: $borderColor, borderWidth: $borderWidth, icon: $icon)';
   }
 
   @JsonKey(ignore: true)
@@ -194,14 +258,23 @@ class _$HexagonImpl extends _Hexagon {
 
 abstract class _Hexagon extends Hexagon {
   factory _Hexagon(
-      {int x,
+      {double height,
+      double width,
+      int x,
       int y,
-      double radius,
-      Offset offset,
+      Offset position,
       Color color,
-      double chance}) = _$HexagonImpl;
+      Color borderColor,
+      double borderWidth,
+      String icon}) = _$HexagonImpl;
   _Hexagon._() : super._();
 
+  @override
+  double get height;
+  set height(double value);
+  @override
+  double get width;
+  set width(double value);
   @override
   int get x;
   set x(int value);
@@ -209,17 +282,20 @@ abstract class _Hexagon extends Hexagon {
   int get y;
   set y(int value);
   @override
-  double get radius;
-  set radius(double value);
-  @override
-  Offset get offset;
-  set offset(Offset value);
+  Offset get position;
+  set position(Offset value);
   @override
   Color get color;
   set color(Color value);
   @override
-  double get chance;
-  set chance(double value);
+  Color get borderColor;
+  set borderColor(Color value);
+  @override
+  double get borderWidth;
+  set borderWidth(double value);
+  @override
+  String get icon;
+  set icon(String value);
   @override
   @JsonKey(ignore: true)
   _$$HexagonImplCopyWith<_$HexagonImpl> get copyWith =>

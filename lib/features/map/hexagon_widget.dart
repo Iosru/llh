@@ -1,17 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:llh/features/map/hexagon.dart';
 import 'package:llh/features/map/hexagon_clipper.dart';
 import 'package:llh/features/map/hexagon_painter.dart';
 
 class HexagonWidget extends StatefulWidget {
   const HexagonWidget({super.key, required this.hexagon});
-
   final Hexagon hexagon;
-  int get x => hexagon.x;
-  int get y => hexagon.y;
-  double get radius => hexagon.radius;
-  double get diameter => (radius * 2);
-
   @override
   State<HexagonWidget> createState() => _HexagonWidgetState();
 }
@@ -19,38 +15,32 @@ class HexagonWidget extends StatefulWidget {
 class _HexagonWidgetState extends State<HexagonWidget> {
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: widget.hexagon.offset.dx,
-      top: widget.hexagon.offset.dy,
-      child: ClipPath(
-        clipper: HexagonClipper(radius: widget.radius),
-        child: GestureDetector(
-          onTap: () => (),
-          child: SizedBox(
-            height: widget.diameter,
-            width: widget.diameter,
-            child: CustomPaint(
-              painter: HexagonPainter(radius: widget.radius),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: widget.hexagon.color,
-                ),
-                child: Center(
-                  child: Text(
-                    "${widget.x}, ${widget.y}",
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+    return Stack(
+      children: [
+        ClipPath(
+          clipper: HexagonClipper(),
+          child: Container(
+            decoration: BoxDecoration(color: widget.hexagon.color),
+            height: widget.hexagon.height,
+            width: widget.hexagon.width,
           ),
         ),
-      ),
+        CustomPaint(
+          painter: HexagonPainter(hexagon: widget.hexagon),
+          child: SizedBox(
+            height: widget.hexagon.height,
+            width: widget.hexagon.width,
+          ),
+        ),
+        Positioned(
+          left: widget.hexagon.width / 3,
+          top: widget.hexagon.height / 3,
+          child: Text(
+            '${widget.hexagon.x}, ${widget.hexagon.y}',
+            style: const TextStyle(color: Colors.black),
+          ),
+        ),
+      ],
     );
   }
 }
-
-//TODO: Have our widgets customized by the properties of the Hexagon model.

@@ -1,39 +1,27 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:llh/features/map/hexagon.dart';
+import 'package:llh/features/map/hexagon_path.dart';
 
+//The HexagonPainter class is mainly used for making the borders around the hexagons, while the HexagonClipper makes the shape and background color.
 class HexagonPainter extends CustomPainter {
-  final double radius;
-  // final double elevation; //TODO: Implement elevation into our hexagon painter.
+  final Hexagon hexagon;
 
-  HexagonPainter({super.repaint, required this.radius});
+  HexagonPainter({super.repaint, required this.hexagon});
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint hexagon = Paint()
-      ..isAntiAlias = true
-      ..color = Colors.white.withOpacity(1.0)
+    Path path = HexagonPath().build(size);
+    Paint paint = Paint()
+      ..color = hexagon.borderColor.withOpacity(1.0)
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 2.0
+      ..strokeWidth = hexagon.borderWidth
       ..style = PaintingStyle.stroke;
-    final center =
-        Offset(size.width / 2, size.height / 2); //Should one of them be height?
-    final multipliers = [1, 3, 5, 7, 9, 11, 1];
-    for (int i = 0; i < 6; i++) {
-      canvas.drawLine(
-          Offset(
-            radius * cos(pi * 2 * (multipliers[i] * 30 / 360)) + center.dx,
-            radius * sin(pi * 2 * (multipliers[i] * 30 / 360)) + center.dy,
-          ),
-          Offset(
-            radius * cos(pi * 2 * (multipliers[i + 1] * 30 / 360)) + center.dx,
-            radius * sin(pi * 2 * (multipliers[i + 1] * 30 / 360)) + center.dy,
-          ),
-          hexagon);
-    }
+    canvas.drawPath(path, paint);
+    // canvas.drawShadow(path, Colors.black, -8.0, false);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+    return true;
   }
 }

@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:llh/features/map/hexagon.dart';
 
@@ -11,39 +8,44 @@ abstract class HexagonGrid with _$HexagonGrid {
   const HexagonGrid._();
 
   factory HexagonGrid({
-    required int gridHeight,
-    required int gridWidth,
-    @Default(0) double gridZoom,
-    @Default(Offset.zero) Offset gridOffset,
-    @Default(false) bool isGenerated,
-    List<Hexagon>? hexagons,
+    required int height,
+    required int width,
+    @Default([]) List<Hexagon> hexagons,
   }) = _HexagonGrid;
 
-  List<Hexagon> generateMap() {
+  //This will generate a list of basic hexagons of the default values.
+  List<Hexagon> generateMap(Hexagon hexagon) {
     List<Hexagon> hexagons = [];
-    if (isGenerated) {
-      Random random = Random();
-      double roll;
-      for (int x = 0; x < gridWidth; x++) {
-        for (int y = 0; y < gridHeight; y++) {
-          roll = random.nextDouble() * 100;
-          Hexagon hexagon = Hexagon();
-          hexagon = hexagon.setCoordinates(x, y);
-          hexagon = hexagon.generateOffset(
-              x.toDouble(), y.toDouble(), gridZoom, gridOffset);
-          if (roll <= 5) {
-            hexagon = hexagon.copyWith(color: Colors.blue);
-            hexagons.add(hexagon);
-          } else if (roll <= 25) {
-            hexagon = hexagon.copyWith(color: Colors.red);
-            hexagons.add(hexagon);
-          } else {
-            hexagon = hexagon.copyWith(color: Colors.green);
-            hexagons.add(hexagon);
-          }
-        }
+    for (int x = 0; x < width; x++) {
+      for (int y = 0; y < height; y++) {
+        hexagon = hexagon.copyWith(x: x, y: y);
+        hexagon = hexagon.getOffset();
+        hexagons.add(hexagon);
       }
     }
     return hexagons;
+  }
+
+  Hexagon getHexagonByCoordinates(int x, int y) {
+    Hexagon hexagon = Hexagon();
+    for (Hexagon h in hexagons) {
+      if (h.x == x && h.y == y) {
+        hexagon = h;
+      }
+    }
+    return hexagon;
+  }
+
+  HexagonGrid replaceHexagon(Hexagon hexagon) {
+    List<Hexagon> temp = [];
+    for (Hexagon h in hexagons) {
+      if (h.x == hexagon.x && h.y == hexagon.y) {
+        hexagon = hexagon.getOffset();
+        temp.add(hexagon);
+      } else {
+        temp.add(h);
+      }
+    }
+    return copyWith(hexagons: temp);
   }
 }

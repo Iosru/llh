@@ -16,12 +16,9 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HexagonGrid {
-  int get gridHeight => throw _privateConstructorUsedError;
-  int get gridWidth => throw _privateConstructorUsedError;
-  double get gridZoom => throw _privateConstructorUsedError;
-  Offset get gridOffset => throw _privateConstructorUsedError;
-  bool get isGenerated => throw _privateConstructorUsedError;
-  List<Hexagon>? get hexagons => throw _privateConstructorUsedError;
+  int get height => throw _privateConstructorUsedError;
+  int get width => throw _privateConstructorUsedError;
+  List<Hexagon> get hexagons => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HexagonGridCopyWith<HexagonGrid> get copyWith =>
@@ -34,13 +31,7 @@ abstract class $HexagonGridCopyWith<$Res> {
           HexagonGrid value, $Res Function(HexagonGrid) then) =
       _$HexagonGridCopyWithImpl<$Res, HexagonGrid>;
   @useResult
-  $Res call(
-      {int gridHeight,
-      int gridWidth,
-      double gridZoom,
-      Offset gridOffset,
-      bool isGenerated,
-      List<Hexagon>? hexagons});
+  $Res call({int height, int width, List<Hexagon> hexagons});
 }
 
 /// @nodoc
@@ -56,38 +47,23 @@ class _$HexagonGridCopyWithImpl<$Res, $Val extends HexagonGrid>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gridHeight = null,
-    Object? gridWidth = null,
-    Object? gridZoom = null,
-    Object? gridOffset = null,
-    Object? isGenerated = null,
-    Object? hexagons = freezed,
+    Object? height = null,
+    Object? width = null,
+    Object? hexagons = null,
   }) {
     return _then(_value.copyWith(
-      gridHeight: null == gridHeight
-          ? _value.gridHeight
-          : gridHeight // ignore: cast_nullable_to_non_nullable
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
               as int,
-      gridWidth: null == gridWidth
-          ? _value.gridWidth
-          : gridWidth // ignore: cast_nullable_to_non_nullable
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
               as int,
-      gridZoom: null == gridZoom
-          ? _value.gridZoom
-          : gridZoom // ignore: cast_nullable_to_non_nullable
-              as double,
-      gridOffset: null == gridOffset
-          ? _value.gridOffset
-          : gridOffset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      isGenerated: null == isGenerated
-          ? _value.isGenerated
-          : isGenerated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hexagons: freezed == hexagons
+      hexagons: null == hexagons
           ? _value.hexagons
           : hexagons // ignore: cast_nullable_to_non_nullable
-              as List<Hexagon>?,
+              as List<Hexagon>,
     ) as $Val);
   }
 }
@@ -100,13 +76,7 @@ abstract class _$$HexagonGridImplCopyWith<$Res>
       __$$HexagonGridImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int gridHeight,
-      int gridWidth,
-      double gridZoom,
-      Offset gridOffset,
-      bool isGenerated,
-      List<Hexagon>? hexagons});
+  $Res call({int height, int width, List<Hexagon> hexagons});
 }
 
 /// @nodoc
@@ -120,38 +90,23 @@ class __$$HexagonGridImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gridHeight = null,
-    Object? gridWidth = null,
-    Object? gridZoom = null,
-    Object? gridOffset = null,
-    Object? isGenerated = null,
-    Object? hexagons = freezed,
+    Object? height = null,
+    Object? width = null,
+    Object? hexagons = null,
   }) {
     return _then(_$HexagonGridImpl(
-      gridHeight: null == gridHeight
-          ? _value.gridHeight
-          : gridHeight // ignore: cast_nullable_to_non_nullable
+      height: null == height
+          ? _value.height
+          : height // ignore: cast_nullable_to_non_nullable
               as int,
-      gridWidth: null == gridWidth
-          ? _value.gridWidth
-          : gridWidth // ignore: cast_nullable_to_non_nullable
+      width: null == width
+          ? _value.width
+          : width // ignore: cast_nullable_to_non_nullable
               as int,
-      gridZoom: null == gridZoom
-          ? _value.gridZoom
-          : gridZoom // ignore: cast_nullable_to_non_nullable
-              as double,
-      gridOffset: null == gridOffset
-          ? _value.gridOffset
-          : gridOffset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      isGenerated: null == isGenerated
-          ? _value.isGenerated
-          : isGenerated // ignore: cast_nullable_to_non_nullable
-              as bool,
-      hexagons: freezed == hexagons
+      hexagons: null == hexagons
           ? _value._hexagons
           : hexagons // ignore: cast_nullable_to_non_nullable
-              as List<Hexagon>?,
+              as List<Hexagon>,
     ));
   }
 }
@@ -160,41 +115,28 @@ class __$$HexagonGridImplCopyWithImpl<$Res>
 
 class _$HexagonGridImpl extends _HexagonGrid {
   _$HexagonGridImpl(
-      {required this.gridHeight,
-      required this.gridWidth,
-      this.gridZoom = 0,
-      this.gridOffset = Offset.zero,
-      this.isGenerated = false,
-      final List<Hexagon>? hexagons})
+      {required this.height,
+      required this.width,
+      final List<Hexagon> hexagons = const []})
       : _hexagons = hexagons,
         super._();
 
   @override
-  final int gridHeight;
+  final int height;
   @override
-  final int gridWidth;
-  @override
-  @JsonKey()
-  final double gridZoom;
+  final int width;
+  final List<Hexagon> _hexagons;
   @override
   @JsonKey()
-  final Offset gridOffset;
-  @override
-  @JsonKey()
-  final bool isGenerated;
-  final List<Hexagon>? _hexagons;
-  @override
-  List<Hexagon>? get hexagons {
-    final value = _hexagons;
-    if (value == null) return null;
+  List<Hexagon> get hexagons {
     if (_hexagons is EqualUnmodifiableListView) return _hexagons;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_hexagons);
   }
 
   @override
   String toString() {
-    return 'HexagonGrid(gridHeight: $gridHeight, gridWidth: $gridWidth, gridZoom: $gridZoom, gridOffset: $gridOffset, isGenerated: $isGenerated, hexagons: $hexagons)';
+    return 'HexagonGrid(height: $height, width: $width, hexagons: $hexagons)';
   }
 
   @override
@@ -202,22 +144,14 @@ class _$HexagonGridImpl extends _HexagonGrid {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HexagonGridImpl &&
-            (identical(other.gridHeight, gridHeight) ||
-                other.gridHeight == gridHeight) &&
-            (identical(other.gridWidth, gridWidth) ||
-                other.gridWidth == gridWidth) &&
-            (identical(other.gridZoom, gridZoom) ||
-                other.gridZoom == gridZoom) &&
-            (identical(other.gridOffset, gridOffset) ||
-                other.gridOffset == gridOffset) &&
-            (identical(other.isGenerated, isGenerated) ||
-                other.isGenerated == isGenerated) &&
+            (identical(other.height, height) || other.height == height) &&
+            (identical(other.width, width) || other.width == width) &&
             const DeepCollectionEquality().equals(other._hexagons, _hexagons));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, gridHeight, gridWidth, gridZoom,
-      gridOffset, isGenerated, const DeepCollectionEquality().hash(_hexagons));
+  int get hashCode => Object.hash(runtimeType, height, width,
+      const DeepCollectionEquality().hash(_hexagons));
 
   @JsonKey(ignore: true)
   @override
@@ -228,26 +162,17 @@ class _$HexagonGridImpl extends _HexagonGrid {
 
 abstract class _HexagonGrid extends HexagonGrid {
   factory _HexagonGrid(
-      {required final int gridHeight,
-      required final int gridWidth,
-      final double gridZoom,
-      final Offset gridOffset,
-      final bool isGenerated,
-      final List<Hexagon>? hexagons}) = _$HexagonGridImpl;
+      {required final int height,
+      required final int width,
+      final List<Hexagon> hexagons}) = _$HexagonGridImpl;
   _HexagonGrid._() : super._();
 
   @override
-  int get gridHeight;
+  int get height;
   @override
-  int get gridWidth;
+  int get width;
   @override
-  double get gridZoom;
-  @override
-  Offset get gridOffset;
-  @override
-  bool get isGenerated;
-  @override
-  List<Hexagon>? get hexagons;
+  List<Hexagon> get hexagons;
   @override
   @JsonKey(ignore: true)
   _$$HexagonGridImplCopyWith<_$HexagonGridImpl> get copyWith =>
