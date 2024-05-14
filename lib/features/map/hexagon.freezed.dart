@@ -34,6 +34,10 @@ mixin _$Hexagon {
   set borderWidth(double value) => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   set icon(String value) => throw _privateConstructorUsedError;
+  bool get isVisible => throw _privateConstructorUsedError;
+  set isVisible(bool value) => throw _privateConstructorUsedError;
+  double get fog => throw _privateConstructorUsedError;
+  set fog(double value) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HexagonCopyWith<Hexagon> get copyWith => throw _privateConstructorUsedError;
@@ -53,7 +57,9 @@ abstract class $HexagonCopyWith<$Res> {
       Color color,
       Color borderColor,
       double borderWidth,
-      String icon});
+      String icon,
+      bool isVisible,
+      double fog});
 }
 
 /// @nodoc
@@ -78,6 +84,8 @@ class _$HexagonCopyWithImpl<$Res, $Val extends Hexagon>
     Object? borderColor = null,
     Object? borderWidth = null,
     Object? icon = null,
+    Object? isVisible = null,
+    Object? fog = null,
   }) {
     return _then(_value.copyWith(
       height: null == height
@@ -116,6 +124,14 @@ class _$HexagonCopyWithImpl<$Res, $Val extends Hexagon>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
+      isVisible: null == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fog: null == fog
+          ? _value.fog
+          : fog // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -136,7 +152,9 @@ abstract class _$$HexagonImplCopyWith<$Res> implements $HexagonCopyWith<$Res> {
       Color color,
       Color borderColor,
       double borderWidth,
-      String icon});
+      String icon,
+      bool isVisible,
+      double fog});
 }
 
 /// @nodoc
@@ -159,6 +177,8 @@ class __$$HexagonImplCopyWithImpl<$Res>
     Object? borderColor = null,
     Object? borderWidth = null,
     Object? icon = null,
+    Object? isVisible = null,
+    Object? fog = null,
   }) {
     return _then(_$HexagonImpl(
       height: null == height
@@ -197,6 +217,14 @@ class __$$HexagonImplCopyWithImpl<$Res>
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
+      isVisible: null == isVisible
+          ? _value.isVisible
+          : isVisible // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fog: null == fog
+          ? _value.fog
+          : fog // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -212,8 +240,10 @@ class _$HexagonImpl extends _Hexagon {
       this.position = const Offset(0, 0),
       this.color = Colors.amber,
       this.borderColor = Colors.orange,
-      this.borderWidth = 4,
-      this.icon = ''})
+      this.borderWidth = 7,
+      this.icon = '',
+      this.isVisible = false,
+      this.fog = 1.0})
       : super._();
 
   @override
@@ -243,10 +273,16 @@ class _$HexagonImpl extends _Hexagon {
   @override
   @JsonKey()
   String icon;
+  @override
+  @JsonKey()
+  bool isVisible;
+  @override
+  @JsonKey()
+  double fog;
 
   @override
   String toString() {
-    return 'Hexagon(height: $height, width: $width, x: $x, y: $y, position: $position, color: $color, borderColor: $borderColor, borderWidth: $borderWidth, icon: $icon)';
+    return 'Hexagon(height: $height, width: $width, x: $x, y: $y, position: $position, color: $color, borderColor: $borderColor, borderWidth: $borderWidth, icon: $icon, isVisible: $isVisible, fog: $fog)';
   }
 
   @JsonKey(ignore: true)
@@ -266,7 +302,9 @@ abstract class _Hexagon extends Hexagon {
       Color color,
       Color borderColor,
       double borderWidth,
-      String icon}) = _$HexagonImpl;
+      String icon,
+      bool isVisible,
+      double fog}) = _$HexagonImpl;
   _Hexagon._() : super._();
 
   @override
@@ -296,6 +334,12 @@ abstract class _Hexagon extends Hexagon {
   @override
   String get icon;
   set icon(String value);
+  @override
+  bool get isVisible;
+  set isVisible(bool value);
+  @override
+  double get fog;
+  set fog(double value);
   @override
   @JsonKey(ignore: true)
   _$$HexagonImplCopyWith<_$HexagonImpl> get copyWith =>

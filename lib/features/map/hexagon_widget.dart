@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:llh/features/map/hexagon.dart';
 import 'package:llh/features/map/hexagon_clipper.dart';
 import 'package:llh/features/map/hexagon_painter.dart';
@@ -17,14 +15,6 @@ class _HexagonWidgetState extends State<HexagonWidget> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ClipPath(
-          clipper: HexagonClipper(),
-          child: Container(
-            decoration: BoxDecoration(color: widget.hexagon.color),
-            height: widget.hexagon.height,
-            width: widget.hexagon.width,
-          ),
-        ),
         CustomPaint(
           painter: HexagonPainter(hexagon: widget.hexagon),
           child: SizedBox(
@@ -32,14 +22,33 @@ class _HexagonWidgetState extends State<HexagonWidget> {
             width: widget.hexagon.width,
           ),
         ),
-        Positioned(
-          left: widget.hexagon.width / 3,
-          top: widget.hexagon.height / 3,
-          child: Text(
-            '${widget.hexagon.x}, ${widget.hexagon.y}',
-            style: const TextStyle(color: Colors.black),
+        ClipPath(
+          clipper: HexagonClipper(),
+          child: GestureDetector(
+            onTap: () => {widget.hexagon.setVisible(true)},
+            child: Container(
+                decoration: BoxDecoration(
+                  color: widget.hexagon.color,
+                ),
+                height: widget.hexagon.height,
+                width: widget.hexagon.width,
+                child: !widget.hexagon.isVisible
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(widget.hexagon.fog),
+                        ),
+                      )
+                    : Container()),
           ),
         ),
+        // Positioned(
+        //   left: widget.hexagon.width / 3,
+        //   top: widget.hexagon.height / 3,
+        //   child: Text(
+        //     '${widget.hexagon.x}, ${widget.hexagon.y}',
+        //     style: const TextStyle(color: Colors.black),
+        //   ),
+        // ),
       ],
     );
   }

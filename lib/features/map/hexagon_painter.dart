@@ -11,13 +11,18 @@ class HexagonPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Path path = HexagonPath().build(size);
+    Color borderColor;
+    if (hexagon.isVisible) {
+      borderColor = hexagon.borderColor;
+    } else {
+      borderColor = Colors.white;
+    }
     Paint paint = Paint()
-      ..color = hexagon.borderColor.withOpacity(1.0)
+      ..color = borderColor.withOpacity(1.0)
       ..strokeCap = StrokeCap.round
       ..strokeWidth = hexagon.borderWidth
       ..style = PaintingStyle.stroke;
     canvas.drawPath(path, paint);
-    // canvas.drawShadow(path, Colors.black, -8.0, false);
   }
 
   @override
