@@ -20,8 +20,18 @@ mixin _$Resource {
   set id(String value) => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   set name(String value) => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  set description(String value) => throw _privateConstructorUsedError;
+  Rarity get rarity => throw _privateConstructorUsedError;
+  set rarity(Rarity value) => throw _privateConstructorUsedError;
   String get icon => throw _privateConstructorUsedError;
   set icon(String value) => throw _privateConstructorUsedError;
+  double get amount => throw _privateConstructorUsedError;
+  set amount(double value) => throw _privateConstructorUsedError;
+  double get capacity => throw _privateConstructorUsedError;
+  set capacity(double value) => throw _privateConstructorUsedError;
+  double get replenishRate => throw _privateConstructorUsedError;
+  set replenishRate(double value) => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ResourceCopyWith<Resource> get copyWith =>
@@ -33,7 +43,15 @@ abstract class $ResourceCopyWith<$Res> {
   factory $ResourceCopyWith(Resource value, $Res Function(Resource) then) =
       _$ResourceCopyWithImpl<$Res, Resource>;
   @useResult
-  $Res call({String id, String name, String icon});
+  $Res call(
+      {String id,
+      String name,
+      String description,
+      Rarity rarity,
+      String icon,
+      double amount,
+      double capacity,
+      double replenishRate});
 }
 
 /// @nodoc
@@ -51,7 +69,12 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? description = null,
+    Object? rarity = null,
     Object? icon = null,
+    Object? amount = null,
+    Object? capacity = null,
+    Object? replenishRate = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -62,10 +85,30 @@ class _$ResourceCopyWithImpl<$Res, $Val extends Resource>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      rarity: null == rarity
+          ? _value.rarity
+          : rarity // ignore: cast_nullable_to_non_nullable
+              as Rarity,
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      capacity: null == capacity
+          ? _value.capacity
+          : capacity // ignore: cast_nullable_to_non_nullable
+              as double,
+      replenishRate: null == replenishRate
+          ? _value.replenishRate
+          : replenishRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -78,7 +121,15 @@ abstract class _$$ResourceImplCopyWith<$Res>
       __$$ResourceImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String icon});
+  $Res call(
+      {String id,
+      String name,
+      String description,
+      Rarity rarity,
+      String icon,
+      double amount,
+      double capacity,
+      double replenishRate});
 }
 
 /// @nodoc
@@ -94,7 +145,12 @@ class __$$ResourceImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? description = null,
+    Object? rarity = null,
     Object? icon = null,
+    Object? amount = null,
+    Object? capacity = null,
+    Object? replenishRate = null,
   }) {
     return _then(_$ResourceImpl(
       id: null == id
@@ -105,10 +161,30 @@ class __$$ResourceImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      rarity: null == rarity
+          ? _value.rarity
+          : rarity // ignore: cast_nullable_to_non_nullable
+              as Rarity,
       icon: null == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
               as String,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as double,
+      capacity: null == capacity
+          ? _value.capacity
+          : capacity // ignore: cast_nullable_to_non_nullable
+              as double,
+      replenishRate: null == replenishRate
+          ? _value.replenishRate
+          : replenishRate // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -119,7 +195,12 @@ class _$ResourceImpl implements _Resource {
   _$ResourceImpl(
       {this.id = 'id',
       this.name = 'name',
-      this.icon = 'assets/placeholder_icon.png'});
+      this.description = '',
+      this.rarity = Rarity.Common,
+      this.icon = 'assets/placeholder_icon.png',
+      this.amount = 100.0,
+      this.capacity = 100.0,
+      this.replenishRate = 0.01});
 
   @override
   @JsonKey()
@@ -129,11 +210,26 @@ class _$ResourceImpl implements _Resource {
   String name;
   @override
   @JsonKey()
+  String description;
+  @override
+  @JsonKey()
+  Rarity rarity;
+  @override
+  @JsonKey()
   String icon;
+  @override
+  @JsonKey()
+  double amount;
+  @override
+  @JsonKey()
+  double capacity;
+  @override
+  @JsonKey()
+  double replenishRate;
 
   @override
   String toString() {
-    return 'Resource(id: $id, name: $name, icon: $icon)';
+    return 'Resource(id: $id, name: $name, description: $description, rarity: $rarity, icon: $icon, amount: $amount, capacity: $capacity, replenishRate: $replenishRate)';
   }
 
   @JsonKey(ignore: true)
@@ -144,7 +240,15 @@ class _$ResourceImpl implements _Resource {
 }
 
 abstract class _Resource implements Resource {
-  factory _Resource({String id, String name, String icon}) = _$ResourceImpl;
+  factory _Resource(
+      {String id,
+      String name,
+      String description,
+      Rarity rarity,
+      String icon,
+      double amount,
+      double capacity,
+      double replenishRate}) = _$ResourceImpl;
 
   @override
   String get id;
@@ -153,8 +257,23 @@ abstract class _Resource implements Resource {
   String get name;
   set name(String value);
   @override
+  String get description;
+  set description(String value);
+  @override
+  Rarity get rarity;
+  set rarity(Rarity value);
+  @override
   String get icon;
   set icon(String value);
+  @override
+  double get amount;
+  set amount(double value);
+  @override
+  double get capacity;
+  set capacity(double value);
+  @override
+  double get replenishRate;
+  set replenishRate(double value);
   @override
   @JsonKey(ignore: true)
   _$$ResourceImplCopyWith<_$ResourceImpl> get copyWith =>

@@ -56,6 +56,16 @@ abstract class HexagonGrid with _$HexagonGrid {
             hexagon = hexagon.copyWith(isVisible: true, fog: 0.0);
           }
         }
+        if (x == 13) {
+          if (y == 1) {
+            hexagon = hexagon.copyWith(isVisible: true, fog: 0.0);
+          }
+        }
+        if (x == 11) {
+          if (y == 9) {
+            hexagon = hexagon.copyWith(isVisible: true, fog: 0.0);
+          }
+        }
         hexagons.add(hexagon);
         hexagon = hexagon.copyWith(isVisible: false, fog: 1.0);
         chance = random.nextInt(101);

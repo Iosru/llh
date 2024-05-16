@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:llh/features/map/hexagon.dart';
 import 'package:llh/features/map/hexagon_grid.dart';
 import 'package:llh/features/map/hexagon_widget.dart';
+import 'package:llh/features/map/line_painter.dart';
+import 'package:llh/models/resource/resource.dart';
+import 'package:llh/ui/widgets/resource_widget.dart';
 
 void main() {
-  runApp(ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -46,6 +49,14 @@ class MyApp extends StatelessWidget {
             decoration: BoxDecoration(border: Border.all(color: Colors.white)),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
+            // child: ResourceWidget(
+            //   resource: Resource(
+            //       id: 'gold_ore',
+            //       name: 'Gold Ore',
+            //       description:
+            //           'A vein of golden ore. It may prove useful once processed.',
+            //       icon: 'assets/gold_ore.png'),
+            // ),
             child: Stack(
               children: [
                 for (Hexagon h in hexagons)
@@ -54,6 +65,12 @@ class MyApp extends StatelessWidget {
                     top: h.position.dy,
                     child: HexagonWidget(hexagon: h),
                   ),
+                CustomPaint(
+                  painter: LinePainter(
+                    startPoint: hexagons[141].position,
+                    endPoint: hexagons[129].position,
+                  ),
+                ),
               ],
             ),
           ),

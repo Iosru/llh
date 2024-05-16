@@ -1,5 +1,4 @@
 # Last Light's Hope
 ### Embrace death alongside [CHARACTER'S NAME] and her undead companions.
 
-###### Interactive Map
-- [ ] Implement a light level system where players can only see where 'active' units are, and enemies can spawn in lower light settings.
+To properly center with Positioned objects, try finding the total size of our screen, subtracting the total size of all our objects (the hexagons), and dividing that by two. Then use that result for the offset for each one.
